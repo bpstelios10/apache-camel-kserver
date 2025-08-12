@@ -1,0 +1,10 @@
+name: fraud-model
+implementation: mlserver_onnx.OnnxModel
+inputs:
+  - name: input
+    datatype: FP64
+    shape: [1, 29]
+outputs:
+  - name: output_label
+    datatype: INT32
+    shape: [1]
