@@ -19,9 +19,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SentimentsRoute2 extends RouteBuilder {
+public class SentimentsRoute extends RouteBuilder {
 
-    Logger log = LoggerFactory.getLogger(SentimentsRoute2.class);
+    Logger log = LoggerFactory.getLogger(SentimentsRoute.class);
     private final HuggingFaceTokenizer tokenizer = HuggingFaceTokenizer.newInstance("distilbert-base-uncased");
 
     @Override
@@ -46,8 +46,8 @@ public class SentimentsRoute2 extends RouteBuilder {
                 .routeId("sentiment-inference")
                 .setBody(this::createRequest)
                 .setHeader("Content-Type", constant("application/json"))
-                .to("kserve:infer?modelName=sentiment&target=host.docker.internal:8001")
-//                .to("kserve:infer?modelName=sentiment&target=localhost:8001")
+//                .to("kserve:infer?modelName=sentiment&target=host.docker.internal:8001")
+                .to("kserve:infer?modelName=sentiment&target=localhost:8001")
                 .process(this::postProcess);
     }
 
@@ -76,7 +76,6 @@ public class SentimentsRoute2 extends RouteBuilder {
     }
 
     private void postProcess(Exchange exchange) {
-        log.debug("-- in response");
         ModelInferResponse response = exchange.getMessage().getBody(ModelInferResponse.class);
 
         List<List<Float>> logits = response.getRawOutputContentsList().stream()

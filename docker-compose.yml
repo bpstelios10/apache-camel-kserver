@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   triton-server:
-    platform: linux/amd64
+    platform: linux/amd64 # used for my awful M3 cpu
     build: ./triton-server
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
@@ -11,17 +11,8 @@ services:
       - "8001:8001"  # gRPC
       - "8002:8002"  # Metrics
 
-#  mlserver:
-#    platform: linux/amd64
-#    build: ./mlserver
-#    environment:
-#      - MLSERVER_MODEL_IMPLEMENTATION=mlserver_onnx.OnnxModel
-#    ports:
-#      - "8080:8080"     # HTTP (KServe V2)
-#      - "8081:8081"     # gRPC
-
   sentiment-service:
-    platform: linux/amd64
+    platform: linux/amd64 # used for my awful M3 cpu
     build: ./sentiment-service
     ports:
       - "8080:8080"

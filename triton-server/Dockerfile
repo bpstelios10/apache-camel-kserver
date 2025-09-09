@@ -7,4 +7,4 @@ COPY models/ /models/
 EXPOSE 8000 8001 8002
 
 # Set entrypoint to run Triton with your model repo
-CMD ["tritonserver", "--model-repository=/models"]
+CMD ["tritonserver", "--model-repository=/models", "--strict-model-config=false"]

@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "d448394d-fab5-4fdb-ada8-4aaa8d96d615",
+		"name": "Apache-Camel-KServe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29615574"
+	},
+	"item": [
+		{
+			"name": "AI-model-sentiments",
+			"item": [
+				{
+					"name": "sentiment - some sentence FROM triton server (i love you)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"inputs\": [\n        {\n            \"name\": \"input_ids\",\n            \"shape\": [\n                1,\n                5\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                101,\n                1045,\n                2293,\n                2017,\n                102\n            ]\n        },\n        {\n            \"name\": \"attention_mask\",\n            \"shape\": [\n                1,\n                5\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                1,\n                1,\n                1,\n                1,\n                1\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/v2/models/sentiment/infer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"models",
+								"sentiment",
+								"infer"
+							]
+						},
+						"description": "http://localhost:8000/v2/models/sentiment/infer"
+					},
+					"response": []
+				},
+				{
+					"name": "sentiment - some sentence FROM triton server (??)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"inputs\": [\n        {\n            \"name\": \"input_ids\",\n            \"shape\": [\n                1,\n                5\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                101,\n                2572,\n                1045,\n                2204,\n                102\n            ]\n        },\n        {\n            \"name\": \"attention_mask\",\n            \"shape\": [\n                1,\n                5\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                1,\n                1,\n                1,\n                1,\n                1\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/v2/models/sentiment/infer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"models",
+								"sentiment",
+								"infer"
+							]
+						},
+						"description": "http://localhost:8000/v2/models/sentiment/infer"
+					},
+					"response": []
+				},
+				{
+					"name": "GET sentences FROM web server",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/sentiments?sentence=i probably like you",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sentiments"
+							],
+							"query": [
+								{
+									"key": "sentence",
+									"value": "i probably like you"
+								}
+							]
+						},
+						"description": "http://localhost:8080/sentiments?sentence=i probably like you, not"
+					},
+					"response": []
+				},
+				{
+					"name": "sentiments model config",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/v2/models/sentiment/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"models",
+								"sentiment",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bert-base-uncased model config",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/v2/models/bert-base-uncased/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"models",
+								"bert-base-uncased",
+								"config"
+							]
+						},
+						"description": "http://localhost:8000/v2/models/bert-base-uncased/config"
+					},
+					"response": []
+				},
+				{
+					"name": "bert-case-uncased - some sentence FROM triton server",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"inputs\": [\n        {\n            \"name\": \"input_ids\",\n            \"shape\": [\n                1,\n                13\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                101,\n                1037,\n                2146,\n                2051,\n                3283,\n                1010,\n                1999,\n                1037,\n                103,\n                2521,\n                2521,\n                2185,\n                102\n            ]\n        },\n        {\n            \"name\": \"attention_mask\",\n            \"shape\": [\n                1,\n                13\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1,\n                1\n            ]\n        },\n        {\n            \"name\": \"token_type_ids\",\n            \"shape\": [\n                1,\n                13\n            ],\n            \"datatype\": \"INT64\",\n            \"data\": [\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0,\n                0\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/v2/models/bert-base-uncased/infer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"models",
+								"bert-base-uncased",
+								"infer"
+							]
+						},
+						"description": "the sentence is: "
+					},
+					"response": []
+				},
+				{
+					"name": "bert - star wars: a long time ago, in a [MASK] far far away, there was a rebellion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/next-sentence-prediction?sentence=star wars: a long time ago, in a [MASK] far far away, there was a rebellion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next-sentence-prediction"
+							],
+							"query": [
+								{
+									"key": "sentence",
+									"value": "star wars: a long time ago, in a [MASK] far far away, there was a rebellion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bert - a long time ago, in a [MASK] far far away",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/next-sentence-prediction?sentence=a long time ago, in a [MASK] far far away",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"next-sentence-prediction"
+							],
+							"query": [
+								{
+									"key": "sentence",
+									"value": "a long time ago, in a [MASK] far far away"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

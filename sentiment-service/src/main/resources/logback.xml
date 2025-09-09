@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="logAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%green(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%logger{10}) - %msg%n%throwable
+            </pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="logAppender"/>
+    </root>
+</configuration>

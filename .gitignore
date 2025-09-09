@@ -29,3 +29,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### ONNX Model Files ###
+.onnx
